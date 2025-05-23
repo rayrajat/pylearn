@@ -1,0 +1,105 @@
+Infinite Iterators
+These functions create iterators that produce values endlessly:
+
+1> itertools.count(start=0, step=1)
+
+Returns: An iterator that returns evenly spaced values starting with start.
+
+Example: count(10, 2) → 10, 12, 14, 16, ...
+
+2> itertools.cycle(iterable)
+
+Returns: An iterator that returns elements from the iterable and saves a copy of each. Once the iterable is exhausted, it returns elements from the saved copy.
+
+Example: cycle('AB') → A, B, A, B, ...
+
+3> itertools.repeat(object, times=None)
+
+Returns: An iterator that returns the object over and over again, optionally limited to times.
+
+Example: repeat(5, 3) → 5, 5, 5
+
+🔗 Iterators Terminating on the Shortest Input Sequence
+These functions stop when the shortest input iterable is exhausted:
+
+4> itertools.chain(*iterables)
+
+Returns: A chain of elements from the given iterables.
+
+Example: chain([1, 2], ['a', 'b']) → 1, 2, 'a', 'b'
+
+5> itertools.chain.from_iterable(iterable)
+
+Alternate constructor for chain. Flattens one level of nesting.
+
+Example: chain.from_iterable([[1, 2], [3, 4]]) → 1, 2, 3, 4
+
+6> itertools.compress(data, selectors)
+
+Filters elements from data, returning only those where the corresponding element in selectors is true.
+
+Example: compress('ABC', [1, 0, 1]) → 'A', 'C'
+
+7> itertools.dropwhile(predicate, iterable)
+
+Skips elements as long as the predicate is true; returns the rest.
+
+Example: dropwhile(lambda x: x < 5, [1, 4, 6, 7]) → 6, 7
+
+8> itertools.takewhile(predicate, iterable)
+
+Opposite of dropwhile; returns elements as long as the predicate is true.
+
+Example: takewhile(lambda x: x < 5, [1, 4, 6, 7]) → 1, 4
+
+9> itertools.filterfalse(predicate, iterable)
+
+Returns elements where the predicate is false.
+
+Example: filterfalse(lambda x: x % 2, range(5)) → 0, 2, 4
+
+10> itertools.islice(iterable, start, stop[, step])
+
+Returns selected elements from the iterable, like slicing.
+
+Example: islice(range(10), 2, 8, 2) → 2, 4, 6
+
+11> itertools.starmap(function, iterable)
+
+Applies function to arguments unpacked from the iterable (expects tuples).
+
+Example: starmap(pow, [(2, 5), (3, 2)]) → 32, 9
+
+12> itertools.zip_longest(*iterables, fillvalue=None)
+
+Returns tuples, filling missing values with fillvalue.
+
+Example: zip_longest('AB', [1, 2, 3], fillvalue='-') → ('A', 1), ('B', 2), ('-', 3)
+
+🧪 Combinatoric Generators
+These functions produce combinatoric constructs:
+
+13> itertools.product(*iterables, repeat=1)
+
+Cartesian product of input iterables.
+
+Example: product('AB', repeat=2) → ('A', 'A'), ('A', 'B'), ('B', 'A'), ('B', 'B')
+
+14> itertools.permutations(iterable, r=None)
+
+r-length permutations of the iterable.
+
+Example: permutations('ABC', 2) → ('A', 'B'), ('A', 'C'), ...
+
+15> itertools.combinations(iterable, r)
+
+r-length combinations of the iterable.
+
+Example: combinations('ABCD', 2) → ('A', 'B'), ('A', 'C'), ...
+
+16> itertools.combinations_with_replacement(iterable, r)
+
+r-length combinations allowing repeated elements.
+
+Example: combinations_with_replacement('AB', 2) → ('A', 'A'), ('A', 'B'), ('B', 'B')
+
