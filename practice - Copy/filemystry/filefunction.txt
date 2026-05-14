@@ -1,0 +1,142 @@
+Python File Handling Tutorial
+1. Text Files (.txt)
+🛠 Functions:
+open()
+
+read(), readline(), readlines()
+
+write(), writelines()
+
+close(), or use with open() as f:
+
+📌 Modes:
+'r' = read
+
+'w' = write (overwrite)
+
+'a' = append
+
+'x' = create file
+
+'r+', 'w+', 'a+' = read + write
+
+Add 'b' to any for binary
+
+sample codes:
+
+✅ Reading a Text File:
+
+with open("example.txt", "r") as file:
+    content = file.read()
+    print(content)
+
+✅ Writing to a Text File:
+
+with open("example.txt", "w") as file:
+    file.write("Hello World\n")
+
+✅ Appending to a Text File:
+
+with open("example.txt", "a") as file:
+    file.write("More text\n")
+
+
+✅ Creating a New File (fails if file exists):
+
+with open("newfile.txt", "x") as file:
+    file.write("Created new file")
+
+
+
+2. binary Files
+
+functions:
+Same as text, but with binary modes: 'rb', 'wb', 'ab', etc.
+
+✅ Reading Binary:
+
+with open("image.jpg", "rb") as file:
+    data = file.read()
+
+Writing Binary:
+
+with open("copy.jpg", "wb") as file:
+    file.write(data)
+
+ CSV Files (.csv)
+🛠 Functions/Modules:
+import csv
+
+csv.reader(), csv.writer()
+
+csv.DictReader, csv.DictWriter
+
+✅ Reading CSV:
+
+import csv
+
+with open("data.csv", newline='') as file:
+    reader = csv.reader(file)
+    for row in reader:
+        print(row)
+✅ Writing CSV:
+
+import csv
+
+with open("output.csv", "w", newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(["Name", "Age"])
+    writer.writerow(["Alice", 30])
+✅ Appending CSV:
+with open("output.csv", "a", newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(["Bob", 25])
+📝 CSV File Practice:
+Read and display a CSV file.
+
+Write a list of dictionaries to a CSV using DictWriter.
+
+Append a new row to an existing CSV file.
+
+Count rows in a CSV file.
+
+4. JSON Files (.json)
+🛠 Functions/Modules:
+import json
+
+json.load(), json.dump()
+
+json.loads(), json.dumps()
+
+✅ Reading JSON:
+
+import json
+
+with open("data.json", "r") as file:
+    data = json.load(file)
+    print(data)
+
+✅ Writing JSON:
+
+data = {"name": "Alice", "age": 30}
+
+with open("data.json", "w") as file:
+    json.dump(data, file, indent=4)
+📝 JSON Practice:
+Read and modify values in a JSON file.
+
+Write a nested dictionary to a JSON file.
+
+Convert JSON string to dict using loads().
+
+🔧 Extra Functions You Should Know:
+os.remove() → delete file
+
+os.rename() → rename file
+
+os.path.exists() → check file existence
+
+seek(), tell() → control file pointer
+
+flush() → flush file buffer
+
